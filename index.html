@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Password strength checker</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+body{
+  background: url('img/background1.jpg');
+ 
+}
+td {
+        width: 50px;
+        height: 50px;
+        /*border: thin solid black;*/
+        cursor: pointer;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .secondCol {
+        width: 300px;
+    }
+
+    .x::before {
+        background-image: url('img/image.jpg');
+        background-size: 30px 30px;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        content: "";
+    }
+   
+    h1,p,table,#form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top:50px;
+        color:white;
+        font-family: "Raleway"
+    }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body><div >
+    <h1 style="color:white;">Password strength checker</h1>
+    <p>Enter your e-mail address and password below.</p>
+  </div>
+    <div id="form">
+    <form onChange="validate()">
+        <input type="email" autofocus id="email" placeholder="E-mail address">
+        <input type="password" id="pass" placeholder="Password">
+        <i id="i" ></i>
+       
+    </form>
+  </div>
+  <div >
+    <table id="table">
+        <tr>
+            <td id="first"></td>
+            <td class="secondCol">- Number of Characters-at least 8</td>
+        </tr>
+        <tr>
+            <td id="num"></td>
+            <td class="secondCol">- Numbers-at least 1</td>
+        </tr>
+        <tr>
+            <td id="symbol"></td>
+            <td class="secondCol">- Symbols-at least 1</td>
+        </tr>
+        <tr>
+            <td id="upper"></td>
+            <td class="secondCol">- Uppercase Letters-at least 1</td>
+        </tr>
+        <tr>
+            <td id="lower"></td>
+            <td class="secondCol">- Lowercase Letters-at least 1</td>
+        </tr>
+        <table>
+        </div>
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+            <script>
+            $("#pass").keyup(function() {
+              var i=$('#i').addClass("fa fa-spinner fa-spin")
+                $(this).each(function() {
+                    var first = $('#first')
+                    var num = $('#num')
+                    var symbol = $('#symbol')
+                    var upper = $('#upper')
+                    var lower = $('#lower')
+                    var ok=$('#true')
+                    if (this.value.length >= 8) { first.addClass('x') }
+                     
+                    if (/\d/.test(this.value)) { num.addClass('x') }
+                    if (/[a-z]/.test(this.value)) { lower.addClass('x') }
+                    if (/[A-Z]/.test(this.value)) { upper.addClass('x') }
+                    if (/[^0-9a-zA-Z]/.test(this.value)) { symbol.addClass('x') }
+                      if(this.value.length >= 8 && /\d/.test(this.value) && /[a-z]/.test(this.value) &&  /[A-Z]/.test(this.value) && /[^0-9a-zA-Z]/.test(this.value))
+                        {i.removeClass("fa fa-spinner fa-spin").addClass('fa fa-thumbs-o-up')}
+                });
+            });
+
+            function validate() {
+                var userEmailElement = document.getElementById("email");
+                var userEmail = userEmailElement.value;
+                var message = "";
+                
+                if (userEmail == '') {
+                    message = "You must enter your email address!";
+                    alert(message);
+                }
+            }
+          
+            </script>
+</body>
+
+</html>
