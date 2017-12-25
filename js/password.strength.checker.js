@@ -8,13 +8,18 @@
                     var lower = $('#lower')
                     var ok=$('#true')
                     if (this.value.length >= 8) { first.addClass('x') }
-                     
+                     else{first.removeClass('x')}
                     if (/\d/.test(this.value)) { num.addClass('x') }
+                        else {num.removeClass('x')}
                     if (/[a-z]/.test(this.value)) { lower.addClass('x') }
+                        else{lower.removeClass('x')}
                     if (/[A-Z]/.test(this.value)) { upper.addClass('x') }
+                        else{upper.removeClass('x')}
                     if (/[^0-9a-zA-Z]/.test(this.value)) { symbol.addClass('x') }
+                        else{symbol.removeClass('x')}
                       if(this.value.length >= 8 && /\d/.test(this.value) && /[a-z]/.test(this.value) &&  /[A-Z]/.test(this.value) && /[^0-9a-zA-Z]/.test(this.value))
                         {i.removeClass("fa fa-spinner fa-spin").addClass('fa fa-thumbs-o-up')}
+               
                 });
             });
 
@@ -28,4 +33,5 @@
                     alert(message);
                 }
             }
+            
           
